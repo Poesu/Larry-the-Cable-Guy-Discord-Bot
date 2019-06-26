@@ -29,7 +29,7 @@ async def wikipedia(ctx):
 async def github(ctx):
     await ctx.channel.send("<http://ctf.verylegit.link/123shockwave-flash.jar.dmg.pdf")
 
-@client.command(name='kick', brief='Kicks a specified member', description='Kicks a specified player')
+@client.command(name='kick', brief='Kicks a specified member', description='Kicks a specified member')
 @has_permissions(kick_members = True)
 async def mod_kick(ctx, member: discord.Member=None):
     if not member:
@@ -43,7 +43,7 @@ async def mod_kick_error(error, ctx):
     if isinstance(error, CheckFailure):
         await ctx.channel.send("You don't have permission to do that.")
 
-@client.command(name='ban', brief='Bans a specified member', description='Bans a specified player')
+@client.command(name='ban', brief='Bans a specified member', description='Bans a specified member')
 @has_permissions(ban_members = True)
 async def mod_ban(ctx, member: discord.Member=None):
     if not member:
