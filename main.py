@@ -1,6 +1,4 @@
-#I know one of these are unused right now, but I'm interested in
-#using them in the future so I will keep the imported here for now
-#so I can implement them later
+#I will use time eventually
 import asyncio
 from commands import *
 import discord
