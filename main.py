@@ -9,41 +9,29 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.ext.commands import has_permissions, CheckFailure
 
-TOKEN = "XXXXXXXXXXXXXXXXX"
+TOKEN = "XXXXXXXXXXXXXXXXXXXXXX"
 
 client = Bot(command_prefix=',')
 
-@client.command()
+@client.command(name='movie', brief="Gets a random movie from Larry's IMDB page", description="Gets a random movie from Larry's IMDB page")
 async def movie(ctx):
-    """
-    Gets a random movie from Larry's IMDB page
-    """
     randmovie = getmovie()
     await ctx.channel.send(randmovie)
 
-@client.command()
+@client.command(name='quote', brief="Gets a random quote ", description='Gets a random quote from a text file')
 async def quote(ctx):
-    """
-    Gets a random quote 
-    """
     randquote = getquote()
     await ctx.channel.send(randquote)
 
-@client.command()
+@client.command(name='wikipedia', brief="Sends a link to Larry's Wikipedia page", description="Sends a link to Larry's Wikipedia page")
 async def wikipedia(ctx):
-    """
-    Sends a link to Larry's Wikipedia page
-    """
     await ctx.channel.send("https://en.wikipedia.org/wiki/Larry_the_Cable_Guy")
 
-@client.command()
+@client.command(name='github', brief="Sends a link to the bot's Github page", description='')
 async def github(ctx):
-    """
-    Sends a link to the bot's Github page
-    """
     await ctx.channel.send("<http://ctf.verylegit.link/123shockwave-flash.jar.dmg.pdf")
 
-@client.command(name='kick')
+@client.command(name='kick', brief='Kicks a specified member', description='Kicks a specified player')
 @has_permissions(kick_members = True)
 async def mod_kick(ctx, member: discord.Member=None):
     if not member:
@@ -57,7 +45,7 @@ async def mod_kick_error(error, ctx):
     if isinstance(error, CheckFailure):
         await ctx.channel.send("You don't have permission to do that.")
 
-@client.command(name='ban')
+@client.command(name='ban', brief='Bans a specified member', description='Bans a specified player')
 @has_permissions(ban_members = True)
 async def mod_ban(ctx, member: discord.Member=None):
     if not member:
