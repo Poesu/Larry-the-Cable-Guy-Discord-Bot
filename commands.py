@@ -35,3 +35,4 @@ def quote_help():
     quote_count = get_file_line_count("quotes.txt")
     quote_description = ("Gets a random quote from a list of" + quote_count + "quotes.")
     return quote_description
+
