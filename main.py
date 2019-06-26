@@ -39,7 +39,7 @@ async def mod_kick(ctx, member: discord.Member=None):
     await ctx.send("Kicked " + member.mention + "!")
 
 @mod_kick.error
-async def mod_kick_error(error, ctx):
+async def mod_kick_error(ctx, error):
     if isinstance(error, CheckFailure):
         await ctx.channel.send("You don't have permission to do that.")
 
@@ -53,7 +53,7 @@ async def mod_ban(ctx, member: discord.Member=None):
     await ctx.send(member.mention + "got struck by the bane hammer!")
 
 @mod_ban.error
-async def mod_ban_error(error, ctx):
+async def mod_ban_error(ctx, error):
     if isinstance(error, CheckFailure):
         await ctx.channel.send("You don't have permission to do that.")
   
