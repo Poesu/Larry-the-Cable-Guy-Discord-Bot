@@ -1,5 +1,5 @@
 #I know a lot of these are unused right now, but I'm interested in
-#using them ipn the future so I will keep the imported here for now
+#using them in the future so I will keep the imported here for now
 #so I can implement them later
 import asyncio
 from commands import *
