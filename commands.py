@@ -12,8 +12,7 @@ def get_random_line(filename):
 
 #created a separate function to return the amount of lines in the text file.
 #Eventually, I'd like to have one funtion that can return both of these but
-#I'm not entirely sure how to go about that right now so it stays like this
-def get_file_line_count(filename):
+#I'm not entirely sure how to go about that so right now it stays like this
     file = open(filename)
     text = file.read()
     lines = text.splitlines()
@@ -35,3 +34,4 @@ def quote_help():
     quote_count = get_file_line_count("quotes.txt")
     quote_description = ("Gets a random quote from a list of" + quote_count + "quotes.")
     return quote_description
+
