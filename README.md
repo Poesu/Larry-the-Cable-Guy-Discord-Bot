@@ -1,4 +1,5 @@
 # Larry-the-Cable-Guy-Discord-Bot
+this is my first real project
 discord bot based around larry the cable guy
 
 BOT INVITE:
