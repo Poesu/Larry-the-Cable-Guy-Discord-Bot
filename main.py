@@ -1,15 +1,16 @@
 import asyncio
-from commands import getquote, getmovie
+from command_func import getquote, getmovie
 import discord
 import time
 from discord.ext import commands
 from discord.ext.commands import Bot, has_permissions, CheckFailure
 from discord.utils import get
+import config
 
 #insert discord bot token here
-TOKEN = "XXXXXXXXXXXXXXXXXXXXXXXX"
+TOKEN = config.token
 
-client = Bot(command_prefix=',')
+client = Bot(command_prefix='!')
 
 #movie command
 @client.command(name='movie', brief="Gets a random movie from Larry's IMDB page", description="Gets a random movie from Larry's IMDB page")
@@ -91,26 +92,20 @@ async def mod_unmute(ctx, member: discord.Member=None, mute_length=None):
 @client.command(name='lockdown', brief='Locks down the text channel', description='Locks down a text channel so only admins can chat (for raids)')
 @has_permissions(manage_channels=True)
 async def admin_lockdown(ctx):
-		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
+		ctx.channel.set_permissions(ctx.guild.default_role, send_messages=False)
 @admin_lockdown.error
 async def admin_lockdown_error(ctx, error):
     if isinstance(error, CheckFailure):
         await ctx.channel.send("You do not have permission to do that")
-    elif ctx.guild.default_role.permissions.send_messages == False:
-        await ctx.channel.send("Channel is already down")
+
+@client.command(name='na', brief='no one asked', description='literally no one asked or cares bro')
+async def na(ctx, member: discord.Member=None):
+    if not member:
+        await ctx.send('Please specify a member')
+        return
+    await ctx.send(member.mention + ' literally no one cares or asked.')
 
 
-#unlock command
-@client.command(name='unlock', brief='Unlocks the text channel', description='Unlocks a text channel that has been locked down')
-@has_permissions(manage_channels=True)
-async def admin_unlock(ctx):
-		await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
-@admin_unlock.error
-async def admin_unlock_error(ctx, error):
-    if isinstance(error, CheckFailure):
-        await ctx.channel.send("You do not have permission to do that")
-    elif ctx.guild.default_role.permissions.send_messages == True:
-        await ctx.channel.send("Channel is not locked down")
 
 #lists guilds in console
 async def list_servers():
